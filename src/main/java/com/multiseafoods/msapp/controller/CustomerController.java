@@ -21,6 +21,7 @@ public class CustomerController {
     @RequestMapping("get/{id}")
     public Result getCustomer(@PathVariable Long id){
         logger.info("getCustomer_id:" + id);
-        return ResultUtil.ok(customerService.get(id));
+        return null;
+        //return ResultUtil.ok(customerService.get(id));
     }
 }
