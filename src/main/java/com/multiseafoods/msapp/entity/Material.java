@@ -4,8 +4,7 @@ import lombok.Data;
 
 import java.util.Date;
 @Data
-public class Material {
-    private Long id;
+public class Material extends BaseEntity {
 
     private String name;
 
@@ -14,5 +13,4 @@ public class Material {
     private Date createdat;
 
     private Date updatedat;
-
 }

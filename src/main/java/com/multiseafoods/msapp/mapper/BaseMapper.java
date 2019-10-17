@@ -1,17 +1,8 @@
 package com.multiseafoods.msapp.mapper;
 
 import com.multiseafoods.msapp.entity.Base;
+import com.multiseafoods.msapp.utils.MyMapper;
 
-public interface BaseMapper {
-    int deleteByPrimaryKey(Integer id);
+public interface BaseMapper extends MyMapper<Base> {
 
-    int insert(Base record);
-
-    int insertSelective(Base record);
-
-    Base selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Base record);
-
-    int updateByPrimaryKey(Base record);
 }

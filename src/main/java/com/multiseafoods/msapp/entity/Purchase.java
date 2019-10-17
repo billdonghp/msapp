@@ -3,8 +3,7 @@ package com.multiseafoods.msapp.entity;
 import lombok.Data;
 
 @Data
-public class Purchase {
-    private Long id;
+public class Purchase extends BaseEntity {
 
     private String no;
 

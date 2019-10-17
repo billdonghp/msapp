@@ -4,8 +4,7 @@ import lombok.Data;
 
 import java.util.Date;
 @Data
-public class Cost {
-    private Long id;
+public class Cost extends BaseEntity {
 
     private String no;
 

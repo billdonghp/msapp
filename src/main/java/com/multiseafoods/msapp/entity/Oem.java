@@ -4,9 +4,7 @@ import lombok.Data;
 
 import java.util.Date;
 @Data
-public class Oem {
-    private Long id;
-
+public class Oem extends BaseEntity {
     private String no;
 
     private String material;
