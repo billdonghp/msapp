@@ -1,17 +1,7 @@
 package com.multiseafoods.msapp.mapper;
 
 import com.multiseafoods.msapp.entity.Purchase;
+import com.multiseafoods.msapp.utils.MyMapper;
 
-public interface PurchaseMapper {
-    int deleteByPrimaryKey(Long id);
-
-    int insert(Purchase record);
-
-    int insertSelective(Purchase record);
-
-    Purchase selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Purchase record);
-
-    int updateByPrimaryKey(Purchase record);
+public interface PurchaseMapper extends MyMapper<Purchase> {
 }

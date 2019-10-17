@@ -1,17 +1,8 @@
 package com.multiseafoods.msapp.mapper;
 
 import com.multiseafoods.msapp.entity.Material;
+import com.multiseafoods.msapp.utils.MyMapper;
 
-public interface MaterialMapper {
-    int deleteByPrimaryKey(Long id);
+public interface MaterialMapper extends MyMapper<Material> {
 
-    int insert(Material record);
-
-    int insertSelective(Material record);
-
-    Material selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Material record);
-
-    int updateByPrimaryKey(Material record);
 }

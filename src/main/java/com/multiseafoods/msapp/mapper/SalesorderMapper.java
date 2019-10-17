@@ -1,17 +1,8 @@
 package com.multiseafoods.msapp.mapper;
 
 import com.multiseafoods.msapp.entity.Salesorder;
+import com.multiseafoods.msapp.utils.MyMapper;
 
-public interface SalesorderMapper {
-    int deleteByPrimaryKey(Long id);
+public interface SalesorderMapper extends MyMapper<Salesorder> {
 
-    int insert(Salesorder record);
-
-    int insertSelective(Salesorder record);
-
-    Salesorder selectByPrimaryKey(Long id);
-
-    int updateByPrimaryKeySelective(Salesorder record);
-
-    int updateByPrimaryKey(Salesorder record);
 }

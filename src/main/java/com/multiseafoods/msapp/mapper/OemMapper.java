@@ -1,9 +1,8 @@
 package com.multiseafoods.msapp.mapper;
 
 import com.multiseafoods.msapp.entity.Oem;
+import com.multiseafoods.msapp.utils.MyMapper;
 
-public interface OemMapper {
-    int insert(Oem record);
+public interface OemMapper extends MyMapper<Oem> {
 
-    int insertSelective(Oem record);
 }
