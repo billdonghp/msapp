@@ -1,7 +1,7 @@
 # msapp
 多元海洋
 
-SpringBoot使用MyBatis报错：tk.mybatis.mapper.provider.base.BaseSelectProvider
+# SpringBoot使用MyBatis报错：tk.mybatis.mapper.provider.base.BaseSelectProvider
 
 在SpringBoot的启动类上，使用@MapperScan注解时引入了错误的包下的。　　
 正确的：import tk.mybatis.spring.annotation.MapperScan;　　
