@@ -1,3 +1,25 @@
 spring:
   profiles:
     active: dev
+
+server:
+  port: 8889
+  servlet:
+    context-path: /msapp
+
+#mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.mulitseafoods.msapp.entity
+
+#mapper
+mapper:
+  mappers: com.multiseafoods.msapp.utils.MyMapper
+  not-empty: false
+  identity: MYSQL
+#pagehelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

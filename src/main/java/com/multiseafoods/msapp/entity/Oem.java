@@ -2,7 +2,6 @@ package com.multiseafoods.msapp.entity;
 
 import lombok.Data;
 
-import java.util.Date;
 @Data
 public class Oem extends BaseEntity {
     private String no;
@@ -22,9 +21,5 @@ public class Oem extends BaseEntity {
     private Float oemfee;
 
     private Integer resqty;
-
-    private Date createdat;
-
-    private String remark;
 
 }

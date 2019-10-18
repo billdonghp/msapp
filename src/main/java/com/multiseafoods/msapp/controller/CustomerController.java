@@ -8,7 +8,7 @@ import com.multiseafoods.msapp.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,16 +22,23 @@ public class CustomerController {
     private CustomerService customerService;
 
     private Logger logger = LoggerFactory.getLogger(CustomerController.class);
-    @RequestMapping("get/{id}")
-    public Result getCustomer(@PathVariable Long id){
-        logger.info("getCustomer_id:" + id);
-        //return null;
-        return ResultUtil.ok(customerService.get(id));
+    @PostMapping("get")
+    public Result getCustomer(Customer customer){
+        logger.info("getCustomer_id:" + customer.getId());
+        return ResultUtil.ok(customerService.get(customer));
     }
 
-    @RequestMapping("findAll")
-    public Result findAll(Customer customer){
-        List<Customer> customerList = customerService.getAll(customer);
+    @PostMapping("query")
+    public Result query(Customer customer){
+        List<Customer> customerList = customerService.query(customer);
         return ResultUtil.ok(new PageInfo<Customer>(customerList));
+    }
+
+    @PostMapping("save")
+    public Result save(Customer customer){
+        if(customerService.save(customer) ==1){
+            return ResultUtil.ok();
+        }
+        return ResultUtil.error(0,"error");
     }
 }

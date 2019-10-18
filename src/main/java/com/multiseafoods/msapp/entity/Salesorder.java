@@ -2,15 +2,12 @@ package com.multiseafoods.msapp.entity;
 
 import lombok.Data;
 
-import java.util.Date;
 @Data
 public class Salesorder extends BaseEntity {
 
     private String material;
 
     private Integer qty;
-
-    private Date createdat;
 
     private String weight;
 
