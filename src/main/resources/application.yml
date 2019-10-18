@@ -1,6 +1,8 @@
 spring:
   profiles:
     active: dev
+  devtools:
+    add-properties: true
 
 server:
   port: 8889
