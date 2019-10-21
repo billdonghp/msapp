@@ -1,6 +1,7 @@
 package com.multiseafoods.msapp.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.multiseafoods.msapp.authorization.annotation.Authorization;
 import com.multiseafoods.msapp.entity.Customer;
 import com.multiseafoods.msapp.entity.Result;
 import com.multiseafoods.msapp.service.CustomerService;
@@ -29,6 +30,7 @@ public class CustomerController {
     }
 
     @PostMapping("query")
+    @Authorization
     public Result query(Customer customer){
         List<Customer> customerList = customerService.query(customer);
         return ResultUtil.ok(new PageInfo<Customer>(customerList));
