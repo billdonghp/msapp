@@ -1,6 +1,5 @@
 package com.multiseafoods.msapp.controller;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.multiseafoods.msapp.authorization.annotation.Authorization;
 import com.multiseafoods.msapp.entity.Base;
@@ -16,7 +15,7 @@ public class BaseController {
     @Autowired
     private BaseService baseService;
 
-    @GetMapping("get")
+    @PostMapping("get")
     public Result get(Base base){
         return ResultUtil.ok(baseService.get(base));
     }
@@ -26,7 +25,7 @@ public class BaseController {
         return ResultUtil.ok(baseService.save(base));
     }
 
-    @GetMapping("query")
+    @PostMapping("query")
     @Authorization
     public Result query(Base base){
        return ResultUtil.ok( new PageInfo<Base>(baseService.query(base)));

@@ -22,7 +22,7 @@
     </properties>
 
     <dependencies>
-<!--        pagehelper-->
+        <!--pagehelper-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
@@ -39,7 +39,7 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.0</version>
         </dependency>
-        <!--mapper        -->
+        <!--mapper-->
         <dependency>
             <groupId>tk.mybatis</groupId>
             <artifactId>mapper-spring-boot-starter</artifactId>
@@ -63,7 +63,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<!--  devtools      -->
+        <!--devtools-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -91,7 +91,26 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
         </dependency>
-<!--        Jasypt-->
+        <!--集成redis，client改用jedis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>redis.clients</groupId>
+                    <artifactId>jedis</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.lettuce</groupId>
+                    <artifactId>lettuce-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+        <!--Jasypt-->
         <dependency>
             <groupId>com.github.ulisesbocchio</groupId>
             <artifactId>jasypt-spring-boot-starter</artifactId>

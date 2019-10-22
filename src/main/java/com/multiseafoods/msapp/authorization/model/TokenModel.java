@@ -1,5 +1,7 @@
 package com.multiseafoods.msapp.authorization.model;
 
+import com.multiseafoods.msapp.utils.JasyptUtil;
+
 public class TokenModel {
     private String username;
 
@@ -28,6 +30,6 @@ public class TokenModel {
 
     @Override
     public String toString() {
-        return  username + '-' + token ;
+        return JasyptUtil.encode(username + '-' + token) ;
     }
 }

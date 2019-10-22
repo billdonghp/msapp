@@ -2,22 +2,29 @@ package com.multiseafoods.msapp.authorization.manager.impl;
 
 import com.multiseafoods.msapp.authorization.manager.TokenManager;
 import com.multiseafoods.msapp.authorization.model.TokenModel;
-import com.multiseafoods.msapp.utils.JasyptUtil;
+import com.multiseafoods.msapp.utils.Contents;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
 @Component
 public class RedisTokenManager implements TokenManager {
-    private Map<String,String> redis = new HashMap<String, String>();
+
+    private final StringRedisTemplate redis;
+    @Autowired
+    public RedisTokenManager(StringRedisTemplate redis) {
+        this.redis = redis;
+    }
 
     @Override
     public TokenModel createToken(String username) {
         String uuid = UUID.randomUUID().toString().replace("-","");
         TokenModel model = new TokenModel(username,uuid);
+        redis.boundValueOps(username).set(uuid, Contents.TOKEN_EXPIRE,TimeUnit.HOURS);
 
-        redis.put(username, model.toString());
         return model;
     }
 
@@ -42,17 +49,18 @@ public class RedisTokenManager implements TokenManager {
             return false;
         }
 
-        String token = redis.get(model.getUsername());
+        String token = redis.boundValueOps(model.getUsername()).get();
 
-        if(token == null || !token.equals(model.toString())){
+        if(token == null || !token.equals(model.getToken())){
             return false;
         }
+        redis.boundValueOps(model.getUsername()).expire(Contents.TOKEN_EXPIRE, TimeUnit.HOURS);
         return true;
     }
 
     @Override
     public void deleteToken(String username) {
-        redis.remove(username);
+        redis.delete(username);
 
     }
 }

@@ -13,5 +13,5 @@ public class MaterialController {
     @Autowired
     private MaterialService materialService;
 
-    Logger logger = LoggerFactory.getLogger(MaterialController.class);
+    private static final Logger logger = LoggerFactory.getLogger(MaterialController.class);
 }

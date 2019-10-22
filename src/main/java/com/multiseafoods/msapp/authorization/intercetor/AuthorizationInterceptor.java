@@ -2,8 +2,8 @@ package com.multiseafoods.msapp.authorization.intercetor;
 
 import com.multiseafoods.msapp.authorization.annotation.Authorization;
 import com.multiseafoods.msapp.authorization.manager.TokenManager;
-import com.multiseafoods.msapp.authorization.manager.impl.RedisTokenManager;
 import com.multiseafoods.msapp.authorization.model.TokenModel;
+import com.multiseafoods.msapp.utils.Contents;
 import com.multiseafoods.msapp.utils.JasyptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,17 +26,17 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         HandlerMethod handlerMethod = (HandlerMethod)handler;
         Method method = handlerMethod.getMethod();
 
-        String authorization = request.getHeader("authorization");
+        String authorization = request.getHeader(Contents.AUTHORIZATION);
         TokenModel model = null;
         try{
-            model = tokenManager.getToken(authorization);
+            model = tokenManager.getToken(JasyptUtil.decode(authorization));
         }catch(Exception e){
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return false;
         }
 
         if(tokenManager.checkToken((model))){
-            request.setAttribute("username",model.getUsername());
+            request.setAttribute(Contents.CURRENT_USERNAME,model.getUsername());
             return true;
 
         }
