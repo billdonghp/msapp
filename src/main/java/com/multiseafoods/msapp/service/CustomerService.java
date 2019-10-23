@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class CustomerService {
     @Autowired
-    private CustomerMapper customerMapper;
+    private  CustomerMapper customerMapper;
 
     public Customer get(Customer customer){
         return customerMapper.selectByPrimaryKey(customer.getId());
@@ -32,6 +32,10 @@ public class CustomerService {
         }
         customer.setCreatedat(new Date());
         return customerMapper.insertSelective(customer);
+    }
+
+    public Integer delete(Customer customer){
+        return customerMapper.deleteByPrimaryKey(customer.getId());
     }
 
 

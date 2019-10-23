@@ -3,7 +3,10 @@ package com.multiseafoods.msapp.controller;
 import com.multiseafoods.msapp.authorization.annotation.Authorization;
 import com.multiseafoods.msapp.authorization.manager.TokenManager;
 import com.multiseafoods.msapp.entity.Result;
+import com.multiseafoods.msapp.entity.User;
+import com.multiseafoods.msapp.service.UserService;
 import com.multiseafoods.msapp.utils.ResultUtil;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,18 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("user/")
+@Api(tags="9.登陆管理")
 public class LoginController {
-
-    private final TokenManager tokenManager;
     @Autowired
-    public LoginController(TokenManager tokenManager){
-        this.tokenManager = tokenManager;
-    }
+    private  UserService userService;
+    @Autowired
+    private  TokenManager tokenManager;
 
-    @PostMapping("login/{username}")
-    public String login(@PathVariable String username){
-        if("20120262".equals(username)){
-            return tokenManager.createToken(username).toString();
+
+    @PostMapping("login/")
+    public String login(User user){
+
+        User getUser = userService.get(user);
+        if((getUser.getPassword()).equals(user.getPassword())  && (getUser.getUsername()).equals(user.getUsername())){
+            return tokenManager.createToken(user.getUsername()).toString();
         }
         return null;
     }

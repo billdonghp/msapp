@@ -1,15 +1,17 @@
 package com.multiseafoods.msapp.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.multiseafoods.msapp.authorization.annotation.Authorization;
+import com.multiseafoods.msapp.entity.Oem;
+import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("ome/")
+@Api(tags="4.OEM管理")
 public class OemController {
-    @GetMapping("get/{id}")
-    public void get(@PathVariable Integer id){
+    @PostMapping("get")
+    @Authorization
+    public void get(Oem oem){
 
     }
 }

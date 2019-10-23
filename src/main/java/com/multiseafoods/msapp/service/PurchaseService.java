@@ -13,7 +13,7 @@ public class PurchaseService {
     @Autowired
     private PurchaseMapper purchaseMapper;
 
-    public List<Purchase> findAll(Purchase purchase){
+    public List<Purchase> query(Purchase purchase){
         if(purchase.getPage() != null && purchase.getRows() != null){
             PageHelper.startPage(purchase.getPage(),purchase.getRows());
         }
