@@ -24,10 +24,9 @@ public class LoginController {
 
 
     @PostMapping("login/")
-    public String login(User user){
+    public String login(User user) throws Exception{
 
-        User getUser = userService.get(user);
-        if((getUser.getPassword()).equals(user.getPassword())  && (getUser.getUsername()).equals(user.getUsername())){
+        if(userService.get(user) != null){
             return tokenManager.createToken(user.getUsername()).toString();
         }
         return null;
