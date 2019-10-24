@@ -16,7 +16,7 @@ public class ExceptionHandl {
     public Result handl(Exception e){
         if (e instanceof CustException){
             CustException custException = (CustException)e;
-            return ResultUtil.error(custException.getCode(),custException.getMessage());
+            return ResultUtil.cust(custException.getCode(),custException.getMessage(),custException.getData());
         }
         logger.error("异常错误【】",e);
         return ResultUtil.error(-1,"未知错误");

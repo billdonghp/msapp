@@ -24,12 +24,8 @@ public class LoginController {
 
 
     @PostMapping("login/")
-    public String login(User user) throws Exception{
-
-        if(userService.get(user) != null){
-            return tokenManager.createToken(user.getUsername()).toString();
-        }
-        return null;
+    public void login(User user) throws Exception{
+        userService.login(user);
     }
 
     @PostMapping("logout/{username}")
