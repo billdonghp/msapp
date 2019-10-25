@@ -1,10 +1,10 @@
 package com.multiseafoods.msapp.entity;
 
 public enum ResultEnum {
-    SUCCESS(200,"登陆成功"),
-    USERNAME_OR_PASSWORD(-1001,"用户名或密码错误"),
-    USER_NOT_FOUND(-1002,"用户不存在"),
-    USER_NOT_LOGIN(-1003,"用户未登陆")
+    SUCCESS(200,"success"),
+    USERNAME_OR_PASSWORD(1001,"用户名或密码错误"),
+    USER_NOT_FOUND(1002,"用户不存在"),
+    USER_NOT_LOGIN(1003,"用户未登陆")
     ;
 
     private Integer code;
